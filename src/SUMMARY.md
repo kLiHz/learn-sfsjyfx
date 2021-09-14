@@ -1,4 +1,4 @@
 # Summary
 
-- [课后作业](./hw/README.md)
-    - [作业 1](./hw/01.md) 
+- [第 1 讲](./chpt01/README.md)
+    - [课后作业](./chpt01/hw.md) 
