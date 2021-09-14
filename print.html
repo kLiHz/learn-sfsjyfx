@@ -375,10 +375,13 @@ C_{avg}(n)
 <li>\(c\)：表明 \(t(n)\) 的增长级数和 \(g(n)\) 相同；</li>
 <li>\(\infty\)：表明 \(t(n)\) 的增长级数比 \(g(n)\) 大。</li>
 </ul>
+<p>求极限时可使用洛必达法则和史特林公式。</p>
+<p>史特林公式：当 \(n\) 足够大时，\(n!=\sqrt{2 \pi n}(\frac{n}{e})^n\)。</p>
 <h2 id="基本的效率类型"><a class="header" href="#基本的效率类型">基本的效率类型</a></h2>
 <table><thead><tr><th align="center">级数</th><th align="center">类型</th></tr></thead><tbody>
 <tr><td align="center">\(c\)</td><td align="center">常数</td></tr>
 <tr><td align="center">\(\log{n}\)</td><td align="center">对数</td></tr>
+<tr><td align="center">\(n^x, x\in(0,1)\)</td><td align="center">-</td></tr>
 <tr><td align="center">\(n\)</td><td align="center">线性</td></tr>
 <tr><td align="center">\(n\log{n}\)</td><td align="center">n-log-n</td></tr>
 <tr><td align="center">\(n^2\)</td><td align="center">平方</td></tr>
@@ -386,16 +389,33 @@ C_{avg}(n)
 <tr><td align="center">\(2^n\)</td><td align="center">指数</td></tr>
 <tr><td align="center">\(n!\)</td><td align="center">阶乘</td></tr>
 </tbody></table>
+<p>例：比较 \(\log_2{n}\) 和 \(\sqrt{n}\) 的增长次数</p>
+<p>\[
+\lim\limits_{n \to \infty}{\frac{\log_2{n}}{\sqrt{n}}}
+= \lim\limits_{n \to \infty}{\frac{(\log_2{n})'}{(\sqrt{n})'}}
+= \lim\limits_{n \to \infty}{\frac{\frac{1}{n\ln{2}}}{\frac{1}{2\sqrt{n}}}}
+= \frac{2}{\ln{2}} \lim\limits_{n \to \infty}{\frac{\sqrt{n}}{n}}
+= 0
+\]</p>
+<p>所以，\(\log_2{n} \in O(\sqrt{n})\).</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="课后作业"><a class="header" href="#课后作业">课后作业</a></h1>
 <p>【习题 2.1.1】对于下列每种算法，请指出 (i) 其输入规模的合理量度；(ii) 它的基本操作；(iii) 对于规模相同的输入来说，其基本操作的次数是否会有所不同。</p>
 <ol type="a">
-    <li>计算 \(n\) 个数的和。</li>
-    <li>计算 \(n!\)。</li>
-    <li>找出包含 \(n\) 个数字的列表中的最大元素。</li>
-    <li>欧几里得算法。</li>
-    <li>埃拉托色尼筛。</li>
+    <li>计算 \(n\) 个数的和；</li>
+    <li>计算 \(n!\)；</li>
+    <li>找出包含 \(n\) 个数字的列表中的最大元素；</li>
+    <li>欧几里得算法；</li>
+    <li>埃拉托色尼筛；</li>
     <li>两个 \(n\) 位十进制整数相乘的笔算算法。</li>
 </ol>
+<table><thead><tr><th>序号</th><th>输入规模量度</th><th>基本操作</th><th>\(C(n)\) 是否变化</th></tr></thead><tbody>
+<tr><td>a</td><td>\(n\)</td><td>两数之间的加法</td><td>无</td></tr>
+<tr><td>b</td><td>\(n\) 的体量大小</td><td>两数之间的乘法</td><td>无</td></tr>
+<tr><td>c</td><td>\(n\) （使用线性扫描法）</td><td>两数之间的比较</td><td>无（使用线性扫描法）</td></tr>
+<tr><td>d</td><td>两数中较大者的体量大小</td><td>取模运算</td><td>有</td></tr>
+<tr><td>e</td><td>\(n\) 的体量大小</td><td>从剩余候选项中排除不可能为素数的选项</td><td>无</td></tr>
+<tr><td>f</td><td>\(n\)</td><td>两个一位十进制数的乘法</td><td>无</td></tr>
+</tbody></table>
 <p>【习题 2.2.2】请用 \(O\),  \(\Omega\) 和 \(\Theta\) 的非正式定义来判断下列断言是真还是假。</p>
 <ol type="a">
     <li>\(n(n+1)/2 \in O(n^3)\)</li>
@@ -403,6 +423,12 @@ C_{avg}(n)
     <li>\(n(n+1)/2 \in \Theta(n^3)\)</li>
     <li>\(n(n+1)/2 \in \Omega(n)\)</li>
 </ol>
+<table><thead><tr><th>编号</th><th>真值</th></tr></thead><tbody>
+<tr><td>a</td><td>真</td></tr>
+<tr><td>b</td><td>真</td></tr>
+<tr><td>c</td><td>假</td></tr>
+<tr><td>d</td><td>真</td></tr>
+</tbody></table>
 <p>【习题 2.2.3】对于下列每一种函数,指出它们属于哪一种 \(\Theta(g(n))\) 类型（尽量使用最简单的 \(g(n)\)），并给出证明。</p>
 <ol type="a">
     <li>\((n^2+1)^{10}\)</li>
@@ -411,16 +437,67 @@ C_{avg}(n)
     <li>\(2^{n+1}+3^{n-1}\)</li>
     <li>\(\lfloor log_2{n} \rfloor\)</li>
 </ol>
+| 编号 | 所属的 \\(\\Theta(g(n))\\)   |
+| ---- | ---------------------------- |
+| a    | \\(\\Theta( n^{20} )\\)      |
+| b    | \\(\\Theta( n )\\)           |
+| c    | \\(\\Theta( n^2\\log{n} )\\) |
+| d    | \\(\\Theta( 3^n )\\)         |
+| e    | \\(\\Theta( \\log{n} )\\)    |
 <p>【习题 2.2.5】按照下列函数的增长次数对它们进行排列（按照从低到高的顺序）。</p>
 <ul>
 <li>\((n-2)!          \)</li>
-<li>\(5\lg(n+100)^{10}\)</li>
+<li>\(5\lg{(n+100)^{10}}\)</li>
 <li>\(2^{2n}          \)</li>
 <li>\(0.001n^4+3n^3+1 \)</li>
 <li>\(\ln^2{n}        \)</li>
 <li>\(\sqrt[3]{n}     \)</li>
 <li>\(3^n             \)</li>
 </ul>
+<table><thead><tr><th>函数</th><th>所属集合</th></tr></thead><tbody>
+<tr><td>\((n-2)!            \)</td><td>\( \Theta((n-2)!        ) \)</td></tr>
+<tr><td>\(5\lg{(n+100)^{10}}\)</td><td>\( \Theta(\log{n}      ) \)</td></tr>
+<tr><td>\(2^{2n}            \)</td><td>\( \Theta(4^n           ) \)</td></tr>
+<tr><td>\(0.001n^4+3n^3+1   \)</td><td>\( \Theta(n^4           ) \)</td></tr>
+<tr><td>\(\ln^2{n}          \)</td><td>\( \Theta(\log^2{n}    ) \)</td></tr>
+<tr><td>\(\sqrt[3]{n}       \)</td><td>\( \Theta(n^{\frac 1 3}) \)</td></tr>
+<tr><td>\(3^n               \)</td><td>\( \Theta(3^n           ) \)</td></tr>
+</tbody></table>
+<p>比较 \(\log^2{n}\) 和 \(\sqrt[3]{n}\) 的增长次数：</p>
+<p>\[
+\lim\limits_{n \to \infty}{ \frac{\log^2{n}}{\sqrt[3]{n}} }
+= \lim\limits_{n \to \infty}{ \frac{(\log^2{n})'}{(\sqrt[3]{n})'} }
+\]</p>
+<p>令 \( u = \log{n}\)，则根据链式法则，</p>
+<p>\[
+(\log^2{n})' = (u^2)' = u' 2u = 2 \log{n} \frac{1}{n\ln 2}
+\]</p>
+<p>又</p>
+<p>\[
+(\sqrt[3]{n})' = \frac {1} {3} n^{-\frac 2 3} = \frac{1}{3\sqrt[3]{n^2}}
+\]</p>
+<p>所以，</p>
+<p>\[
+\lim\limits_{n \to \infty}{ \frac{\log^2{n}}{\sqrt[3]{n}} }
+= \lim\limits_{n \to \infty}{
+\frac {2 \log{n} \frac{1}{n\ln 2}} {\frac{1}{3\sqrt[3]{n^2}}}
+}
+= \frac{6}{\ln{2}} \lim\limits_{n \to \infty}{
+\frac{\sqrt[3]{n^2} \log{n}}{n}
+}
+= 0
+\]</p>
+<p>故 \(\log^2{n}\) 的增长次数比 \(\sqrt[3]{n}\) 小。</p>
+<p>排序可得：</p>
+<table><thead><tr><th>函数</th><th>所属集合</th></tr></thead><tbody>
+<tr><td>\(5\lg{(n+100)^{10}}\)</td><td>\( \Theta(\log{n}      ) \)</td></tr>
+<tr><td>\(\ln^2{n}          \)</td><td>\( \Theta(\log^2{n}    ) \)</td></tr>
+<tr><td>\(\sqrt[3]{n}       \)</td><td>\( \Theta(n^{\frac 1 3}) \)</td></tr>
+<tr><td>\(0.001n^4+3n^3+1   \)</td><td>\( \Theta(n^4           ) \)</td></tr>
+<tr><td>\(3^n               \)</td><td>\( \Theta(3^n           ) \)</td></tr>
+<tr><td>\(2^{2n}            \)</td><td>\( \Theta(4^n           ) \)</td></tr>
+<tr><td>\((n-2)!            \)</td><td>\( \Theta((n-2)!        ) \)</td></tr>
+</tbody></table>
 
                     </main>
 

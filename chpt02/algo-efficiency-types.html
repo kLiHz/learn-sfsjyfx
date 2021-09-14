@@ -180,10 +180,13 @@
 <li>\(c\)：表明 \(t(n)\) 的增长级数和 \(g(n)\) 相同；</li>
 <li>\(\infty\)：表明 \(t(n)\) 的增长级数比 \(g(n)\) 大。</li>
 </ul>
+<p>求极限时可使用洛必达法则和史特林公式。</p>
+<p>史特林公式：当 \(n\) 足够大时，\(n!=\sqrt{2 \pi n}(\frac{n}{e})^n\)。</p>
 <h2 id="基本的效率类型"><a class="header" href="#基本的效率类型">基本的效率类型</a></h2>
 <table><thead><tr><th align="center">级数</th><th align="center">类型</th></tr></thead><tbody>
 <tr><td align="center">\(c\)</td><td align="center">常数</td></tr>
 <tr><td align="center">\(\log{n}\)</td><td align="center">对数</td></tr>
+<tr><td align="center">\(n^x, x\in(0,1)\)</td><td align="center">-</td></tr>
 <tr><td align="center">\(n\)</td><td align="center">线性</td></tr>
 <tr><td align="center">\(n\log{n}\)</td><td align="center">n-log-n</td></tr>
 <tr><td align="center">\(n^2\)</td><td align="center">平方</td></tr>
@@ -191,6 +194,15 @@
 <tr><td align="center">\(2^n\)</td><td align="center">指数</td></tr>
 <tr><td align="center">\(n!\)</td><td align="center">阶乘</td></tr>
 </tbody></table>
+<p>例：比较 \(\log_2{n}\) 和 \(\sqrt{n}\) 的增长次数</p>
+<p>\[
+\lim\limits_{n \to \infty}{\frac{\log_2{n}}{\sqrt{n}}}
+= \lim\limits_{n \to \infty}{\frac{(\log_2{n})'}{(\sqrt{n})'}}
+= \lim\limits_{n \to \infty}{\frac{\frac{1}{n\ln{2}}}{\frac{1}{2\sqrt{n}}}}
+= \frac{2}{\ln{2}} \lim\limits_{n \to \infty}{\frac{\sqrt{n}}{n}}
+= 0
+\]</p>
+<p>所以，\(\log_2{n} \in O(\sqrt{n})\).</p>
 
                     </main>
 
