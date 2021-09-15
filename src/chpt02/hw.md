@@ -11,6 +11,8 @@
     <li>两个 \(n\) 位十进制整数相乘的笔算算法。</li>
 </ol>
 
+【解】
+
 | 序号 | 输入规模量度               | 基本操作                             | \\(C(n)\\) 是否变化  |
 | ---- | -------------------------- | ------------------------------------ | -------------------- |
 | a    | \\(n\\)                    | 两数之间的加法                       | 无                   |
@@ -31,6 +33,7 @@
     <li>\(n(n+1)/2 \in \Omega(n)\)</li>
 </ol>
 
+【解】
 
 | 编号 | 真值 |
 | ---- | ---- |
@@ -50,15 +53,42 @@
     <li>\(2^{n+1}+3^{n-1}\)</li>
     <li>\(\lfloor log_2{n} \rfloor\)</li>
 </ol>
-| 编号 | 所属的 \\(\\Theta(g(n))\\)   |
-| ---- | ---------------------------- |
-| a    | \\(\\Theta( n^{20} )\\)      |
-| b    | \\(\\Theta( n )\\)           |
-| c    | \\(\\Theta( n^2\\log{n} )\\) |
-| d    | \\(\\Theta( 3^n )\\)         |
-| e    | \\(\\Theta( \\log{n} )\\)    |
 
+【解】
 
+<ol type="a">
+    <li>
+        <p>猜测：\((n^2+1)^{10} \approx (n^2)^{10} = n^{20} \in \Theta(n^{20})\).</p>
+        <p>证明：\(
+            \lim\limits_{n \to \infty}{ \frac{(n^2+1)^{10}}{n^{20}} }
+            = \lim\limits_{n \to \infty}{ \frac{(n^2+1)^{10}}{(n^2)^{10}} }
+            = \lim\limits_{n \to \infty}{ (\frac{n^2+1}{n^2})^{10} }
+            = \lim\limits_{n \to \infty}{ (1+\frac{1}{n^2})^{10} } = 1 \).
+        </p>
+        <p>所以 \((n^2+1)^{10} \in \Theta(n^{20})\).</p>
+    </li>
+    <li>
+        <p>猜测：\(\sqrt{10n^2+7n+3} \approx \sqrt{10n^2} = \sqrt{10}n \in \Theta( n ) \).</p>
+        <p>证明：\(
+            \lim\limits_{n \to \infty}{ \frac{\sqrt{10n^2+7n+3}}{n} } 
+            = \lim\limits_{n \to \infty}{ \sqrt{\frac{10n^2+7n+3}{n^2}} }
+            = \lim\limits_{n \to \infty}{ \sqrt{10+\frac 7 n + \frac{3}{n^2} } }
+            = \sqrt{10} \)</p>
+        <p>所以 \(\sqrt{10n^2+7n+3} \in \Theta( n ) \).</p>
+    </li>
+    <li>
+        <p>\(2n\lg{(n+2)^2}+(n+2)^2\lg{\frac n 2} = 4n\lg{(n+2)} + (n+2)^2(\lg{n} - 1) \in \max\{ \Theta(n\lg n), \Theta(n^2\lg n)\} = \Theta(n^2\lg n) \).</p>
+    </li>
+    <li>
+        <p>\(2^{n+1}+3^{n-1} = 2\times 2^n + \frac 1 3 3^n \in \max\{\Theta(2^n), \Theta(3^n)\} = \Theta(3^n) \).</p>
+    </li>
+    <li>
+        <p>证明，由 \(x-1 &lt; \lfloor x \rfloor \leq x \).</p>
+        <p>得 \(\lfloor log_2{n} \rfloor \leq \log_2{n} \) 且 \(\lfloor log_2{n} \rfloor > \log_2{n} - 1 \).</p>
+        <p>又 \(\forall n \geq 4, \lfloor log_2{n} \rfloor > \log_2{n} - 1 \geq \log_2{n} - \frac 1 2 \log_2{n} = \frac 1 2 \log_2{n} \).</p>
+        <p>所以 \(\lfloor \log_2{n} \rfloor \in \Theta(\log_2{n}) = \Theta(\log{n}) \).</p>
+    </li>
+</ol>
 
 【习题 2.2.5】按照下列函数的增长次数对它们进行排列（按照从低到高的顺序）。
 
@@ -69,6 +99,8 @@
 - \\(\ln^2{n}        \\)
 - \\(\sqrt[3]{n}     \\)
 - \\(3^n             \\)
+
+【解】
 
 | 函数 | 所属集合 |
 | ------------------------ | ------------------- |
@@ -108,6 +140,9 @@
   }
 = \\frac{6}{\\ln{2}} \\lim\\limits\_{n \\to \\infty}{
     \\frac{\\sqrt[3]{n^2} \\log{n}}{n}
+  }
+= \\frac{6}{\\ln{2}} \\lim\\limits\_{n \\to \\infty}{
+    \\frac{\\log{n}}{\\sqrt[3]{n}}
   }
 = 0
 \\]
