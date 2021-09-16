@@ -35,14 +35,12 @@
 
 【解】
 
-| 编号 | 真值 |
-| ---- | ---- |
-| a    | 真   |
-| b    | 真   |
-| c    | 假   |
-| d    | 真   |
-
-
+<ol type="a">
+  <li>真</li>
+  <li>真</li>
+  <li>假</li>
+  <li>真</li>
+</ol>
 
 【习题 2.2.3】对于下列每一种函数,指出它们属于哪一种 \\(\Theta(g(n))\\) 类型（尽量使用最简单的 \\(g(n)\\)），并给出证明。
 
@@ -77,7 +75,8 @@
         <p>所以 \(\sqrt{10n^2+7n+3} \in \Theta( n ) \).</p>
     </li>
     <li>
-        <p>\(2n\lg{(n+2)^2}+(n+2)^2\lg{\frac n 2} = 4n\lg{(n+2)} + (n+2)^2(\lg{n} - 1) \in \max\{ \Theta(n\lg n), \Theta(n^2\lg n)\} = \Theta(n^2\lg n) \).</p>
+        <p>\(2n\lg{(n+2)^2}+(n+2)^2\lg{\frac n 2} = 4n\lg{(n+2)} + (n+2)^2(\lg{n} - 1)\).</p>
+        <p>故原式 \(\in \max\{ \Theta(n\lg n), \Theta(n^2\lg n)\} = \Theta(n^2\lg n)  \).</p>
     </li>
     <li>
         <p>\(2^{n+1}+3^{n-1} = 2\times 2^n + \frac 1 3 3^n \in \max\{\Theta(2^n), \Theta(3^n)\} = \Theta(3^n) \).</p>

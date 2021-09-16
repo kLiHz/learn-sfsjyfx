@@ -1,6 +1,6 @@
 [book]
 authors = ["henry_23"]
-language = "en"
+language = "zh-cn"
 multilingual = false
 src = "src"
 title = "算法设计与分析学习"
